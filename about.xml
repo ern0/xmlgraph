@@ -1,0 +1,16 @@
+<about>
+	<project title="xmlgraph" description="xml visualization with graphviz" license="open source">
+		<purpose description="use graphviz"/>			
+		<purpose description="make nice graphs for docs"/>			
+	</project>
+	<release date="2009.07.14" state="beta (what else)" >
+		<issues>
+			<bug description="floating menu vs window scrolling"/>
+			<bug description="inaccurate utf8 detection"/>
+			<feature description="more themes"/>
+			<feature description="better graphviz script generation"/>
+		</issues>
+	</release>
+	<author name="ern0" email="ern0@linkbroker.hu"/>
+	
+</about>

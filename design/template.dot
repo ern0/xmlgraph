@@ -1,0 +1,125 @@
+----[main]---------------------------------------------------------------------
+digraph xml { 
+
+resolution=#RESOLUTION;
+rankdir=#RANKDIR;
+
+node [
+	shape=plaintext; 
+	fontname="#FONT";
+];
+
+#STUFF
+
+}
+----[node]---------------------------------------------------------------------
+#PATH [label=<
+<table cellpadding="0" 
+	bgcolor="#663322" 
+	border="0" 
+	cellborder="0" 
+	cellspacing="1">
+<tr><td>
+	
+	<table 
+		cellpadding="0"
+		border="0" 
+		cellborder="0" 
+		cellspacing="0"
+	>
+		<tr>
+			<td>
+				<table
+					cellpadding="#PADDING"
+					bgcolor="#BGCOLOR"
+					border="0"
+					cellborder="0"
+					cellspacing="0"
+				>
+					#NODEFORMAT
+				</table>
+			</td>				
+		</tr>
+
+		#ATTRIBS
+
+	</table>
+	
+</td></tr></table>
+>];
+----[nodewnum]-----------------------------------------------------------------
+<tr>
+	<td align="left"><font color="#NODECOLOR" point-size="#FONTSIZE">&lt;#NAME&gt; </font></td>
+	<td align="right"><font color="#COUNTCOLOR" point-size="#FONTSIZE">#NUM</font></td>
+</tr>
+----[nodewonum]----------------------------------------------------------------
+<tr>
+	<td align="center"><font color="#NODECOLOR" point-size="#FONTSIZE">&lt;#NAME&gt;</font></td>
+</tr>
+----[attribs]------------------------------------------------------------------
+		<tr>
+			<td>		
+				<table
+					cellpadding="#PADDING"
+					bgcolor="#BGCOLOR"
+					border="0"
+					cellborder="0"
+					cellspacing="0"
+				>
+					#ATTRIBS 
+				</table>
+			</td>
+		</tr>
+----[attrib]-------------------------------------------------------------------
+#ATTRIBFORMAT
+#VALUES
+----[attribwnum]---------------------------------------------------------------
+<tr>
+	<td border="0"><font point-size="#FONTSIZE" color="#BGCOLOR">.</font></td>
+	<td border="0" colspan="2" align="left"><font 
+	point-size="#FONTSIZE" color="#ATTRCOLOR">#ATTRIB=</font></td>	
+	<td border="0" colspan="2" align="right"><font 
+	color="#COUNTCOLOR" point-size="#FONTSIZE">#NUM</font></td>
+	<td border="0"><font point-size="#FONTSIZE" color="#BGCOLOR">.</font></td>
+</tr>
+----[attribwonum]--------------------------------------------------------------
+<tr>
+	<td border="0"><font point-size="#FONTSIZE" color="#BGCOLOR">.</font></td>
+	<td border="0" colspan="4" align="left"><font 
+	point-size="#FONTSIZE" color="#ATTRCOLOR">#ATTRIB=</font></td>
+	<td border="0"><font point-size="#FONTSIZE" color="#BGCOLOR">.</font></td>
+</tr>
+----[values]-------------------------------------------------------------------
+#VALUES
+----[valuewnum]--------------------------------------------------------------------
+<tr>
+	<td border="0"><font point-size="#FONTSIZE" color="#DARKCOLOR">.</font></td>
+	<td border="0"><font point-size="#FONTSIZE" color="#DARKCOLOR">.</font></td>
+	<td bgcolor="#BGCOLOR" align="left"><font color="#VALCOLOR" point-size="#FONTSIZE">#VALUE</font></td>
+	<td bgcolor="#BGCOLOR" align="right"><font color="#COUNTCOLOR" point-size="#FONTSIZE">#NUM</font></td>
+	<td border="0"><font point-size="#FONTSIZE" color="#DARKCOLOR">.</font></td>
+	<td border="0"><font point-size="#FONTSIZE" color="#DARKCOLOR">.</font></td>
+</tr>
+----[valuewonum]--------------------------------------------------------------------
+<tr>
+	<td border="0"><font point-size="#FONTSIZE" color="#DARKCOLOR">.</font></td>
+	<td border="0"><font point-size="#FONTSIZE" color="#DARKCOLOR">.</font></td>
+	<td colspan="2" bgcolor="#BGCOLOR" align="left"><font color="#VALCOLOR" point-size="#FONTSIZE">#VALUE</font></td>
+	<td border="0"><font point-size="#FONTSIZE" color="#DARKCOLOR">.</font></td>
+	<td border="0"><font point-size="#FONTSIZE" color="#DARKCOLOR">.</font></td>
+</tr>
+----[valueattr]----------------------------------------------------------------
+"#VALUE"
+----[valuetext]----------------------------------------------------------------
+#VALUE&nbsp;
+----[valuelong]----------------------------------------------------------------
+(various long)
+----[valuehidden]----------------------------------------------------------------
+(various other)
+----[edge]---------------------------------------------------------------------
+#A->#B [
+	arrowsize="#ARROWSIZE" 
+	color="#ARROWCOLOR" 
+	arrowhead="#ARROWHEAD"
+	arrowtail="#ARROWTAIL"
+];

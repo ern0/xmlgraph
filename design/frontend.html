@@ -1,0 +1,271 @@
+----[main]---------------------------------------------------------------------
+<html><head>
+	<title> xmlgraph - graphical xml tree visualization with graphviz</title>
+	
+	<style>
+	
+body {
+	font-family: #FONT;
+	font-size: 12;
+	font-weight: bold;
+	background: #ffffff;
+	padding: 0;
+	border: none;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+
+img {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+	
+.flt {
+	position: absolute;
+	top: 2;
+	right: 2;
+	padding: 2px;
+	
+	color: #FG;
+	background: #BG;
+	border: solid 2px #BORDER;
+	visibility: hidden;
+	
+}
+
+table {
+	padding: 0;
+	margin: 0;
+	border: none;
+	border-spacing: 0;
+	table-layout: auto;
+}
+tr {
+	vertical-align: middle;
+}
+td {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+select {
+	padding: 0;
+	margin: 2;
+}
+	
+	</style>
+
+
+	<script>
+		
+		var hpos = "#HPOS";
+		var vpos = "#VPOS";
+		
+								
+		function arrowClick(hclick) {
+		
+			var h = hpos;
+			var v = vpos;
+
+			var hinv = "l";
+			if (hpos == "l") hinv = "r";
+			var vinv = "t";
+			if (vpos == "t") vinv = "b";
+		
+			if (hpos != hclick) {
+				h = hinv;
+			} else {
+				v = vinv;		
+			}
+		
+			setBarPos(h,v);
+			
+		} // arrowClick()
+		
+
+		function setBarPos(h,v) {
+			
+			x = document.getElementById("flt");
+			x.style.visibility = "hidden";
+			
+			lico = document.getElementById("lico");
+			rico = document.getElementById("rico");
+		
+			if (h == "l") {
+				x.style.left = 2 + document.body.scrollLeft;
+				x.style.right = "auto";
+				hpos = "l";
+			}
+			if (h == "r") {
+				x.style.right = 2 - document.body.scrollLeft;
+				x.style.left = "auto";
+				hpos = "r";
+			}
+			
+			if (v == "t") {
+				x.style.top = 2 + document.body.scrollTop;
+				x.style.bottom = "auto";
+				vpos = "t";
+			}
+			if (v == "b") {
+				x.style.bottom = 2 - document.body.scrollTop;
+				x.style.top = "auto";
+				vpos = "b";
+			}
+
+			document.getElementById("hpos").value = hpos;
+			document.getElementById("vpos").value = vpos;
+			document.getElementById("hposx").value = hpos;
+			document.getElementById("vposx").value = vpos;
+			
+			if (hpos == "l") {
+				vico = lico;
+				rico.src = "image/rt.png";
+			} else {
+				vico = rico;
+				lico.src = "image/lt.png";
+			}			
+			
+			if (vpos == "t") {
+				vico.src = "image/dn.png";
+			} else {
+				vico.src = "image/up.png";
+			}
+			
+			x.style.visibility = "visible";
+			
+		} // setBarPos()
+			
+			
+		function clrnode() {
+			
+			document.getElementById("node").innerHTML = "";
+			
+		} // clrnode()
+		
+	</script>
+	
+	
+</head><body 
+	onload="setBarPos(hpos,vpos);" 
+	onscroll="setBarPos(hpos,vpos);" 
+	onresize="setBarPos(hpos,vpos);"
+>
+
+	<div class="img" id="img">
+		<img	src="xmlgraph.php?img=#FILEPARM#IMGPARMS">
+	</div>
+
+	
+		<div id="flt" class="flt">
+			<table>
+
+				<form method="get" action="xmlgraph.php">
+
+				<tr>
+					<td rowspan="4">
+						<a href="#" onclick="arrowClick('l'); return false;"><img 
+						id="lico" src="image/lt.png"></a>
+					</td>					
+					
+					<td>
+
+						<select id="file" name="file" onchange="clrnode(); submit();">
+							#FILES
+						</select>
+
+						<select id="node" name="node" onchange="submit();">
+							#NODES
+						</select>
+
+						<select id="depth" name="depth" onchange="submit();">
+							#DEPTH
+						</select>
+
+					</td>
+					<td rowspan="4">
+						<a href="#" onclick="arrowClick('r'); return false;"><img 
+						id="rico" src="image/rt.png"></a>
+					</td>
+				</tr>
+				<tr	>
+					<td>
+								
+						<select id="res" name="res" onchange="submit();">
+							#RES
+						</select>
+
+						<select name="theme" onchange="submit();">
+							#THEMES
+						</select>
+
+						<select name="dir" onchange="submit();">
+							#DIR
+						</select>
+			
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
+						<select name="value" onchange="submit();">
+							#VALUE
+						</select>
+
+						<select name="count" onchange="submit();">
+							#COUNT
+						</select>
+
+					</td>
+				</tr>
+				
+				<input id="hpos" name="bh" value="#HPOS" type="hidden">
+				<input id="vpos" name="bv" value="#VPOS" type="hidden">
+				</form>				
+				
+				<form enctype="multipart/form-data" action="xmlgraph.php?file=#FILEPARM#IMGPARMS" method="post">
+				
+				<tr>
+					<td>
+				
+						<a href="xmlgraph.php?txt=#FILEPARM#THEMEPARM"><img	
+						src="design/xml.gif" title="show xml"></a>&nbsp;&nbsp;&nbsp;
+				
+							<input id="hposx" name="bh" value="#HPOS" type="hidden">
+							<input id="vposx" name="bv" value="#VPOS" type="hidden">
+						
+							<input type="hidden" name="MAX_FILE_SIZE" value="1200300">
+							<input type="file" name="file" size="21">
+							<input type="submit" name="button" value="upload">
+
+					</td>
+				</tr>
+
+				</form>
+
+			</table>
+			
+			<div alig="right">
+				<a href="xmlgraph-20090714.zip"><img align="right" src="image/download.png" width="16" height="15"></a>
+			</div>
+
+		</div>
+
+</body></html>
+----[themeoption]--------------------------------------------------------------
+<option style="background: #BG; color: #FG;" value="#VALUE">
+	#TITLE
+</option>
+----[themeselected]------------------------------------------------------------
+<option style="background: #BG; color: #FG;" value="#VALUE" selected>
+	#TITLE
+</option>
+----[option]-------------------------------------------------------------------
+<option value="#VALUE">#TITLE</option>
+----[selected]-----------------------------------------------------------------
+<option value="#VALUE" selected>#TITLE</option>
+----[pulldownroot]-------------------------------------------------------------
+/#TITLE
+----[pulldownsub]--------------------------------------------------------------
+#TITLE
