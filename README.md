@@ -6,5 +6,8 @@ renders a graph from a given XML file, which graph contains
 the most important attributes and nodes (can be adjusted). 
 This image can be used as the documentation of the XML file.
 
+![sample](https://raw.githubusercontent.com/ern0/xmldoc/master/doc/sample.png)
+
+
 Requires PHP and GraphViz.
 This utility is written in 2009 but released years later.
